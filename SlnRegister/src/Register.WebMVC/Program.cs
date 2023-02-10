@@ -1,7 +1,25 @@
+using Castle.Components.DictionaryAdapter;
+using Microsoft.EntityFrameworkCore;
+using Register.Domain.Contracts.Repositories;
+using Register.Infra.Data.Repository.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Context SQL Server
+var connectionStringUser = builder.Configuration.GetConnectionString("SQLServerConnection");
+builder.Services.AddDbContext<SQLServerContext>
+    (options => options.UseSqlServer(connectionStringUser));
+
+//Repositories
+builder.Services.AddScoped<IConditionRepository, IConditionRepository>();
+builder.Services.AddScoped<IDoctorRepository, IDoctorRepository>();
+builder.Services.AddScoped<IPatientRepository, IPatientRepository>();
+builder.Services.AddScoped<IPersonRepository, IPersonRepository>();
+builder.Services.AddScoped<IReceptionistRepository, IReceptionistRepository>();
+builder.Services.AddScoped<ISpecialtyRepository, ISpecialtyRepository>();
 
 var app = builder.Build();
 
