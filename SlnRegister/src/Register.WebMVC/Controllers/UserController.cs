@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Register.Domain.Contracts.Services;
 using Register.Domain.DTO;
+using Register.WebMVC.Models;
 
 namespace Register.WebMVC.Controllers
 {
@@ -51,6 +52,37 @@ namespace Register.WebMVC.Controllers
                 if (await _service.Save(user) > 0) return RedirectToAction(nameof(Index));
             }
             return View(user);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> Delete(int? id)
+        {
+            var returnDel = new ReturnJsonDel()
+            {
+                status = "Success",
+                code = "200",
+            };
+
+            try
+            {
+                if(await _service.Delete(id ?? 0) <= 0)
+                {
+                    returnDel = new ReturnJsonDel()
+                    {
+                        status = "Error",
+                        code = "400"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                returnDel = new ReturnJsonDel()
+                {
+                    status = ex.Message,
+                    code = "500",
+                };
+            }
+            return Json(returnDel);
         }
     }
 }
