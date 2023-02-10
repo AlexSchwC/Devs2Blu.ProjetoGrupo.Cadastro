@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Register.Domain.Contracts.Repositories;
-using Register.Infra.Data.Repository.Contracts;
+using Register.Infra.Data.Repository.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;

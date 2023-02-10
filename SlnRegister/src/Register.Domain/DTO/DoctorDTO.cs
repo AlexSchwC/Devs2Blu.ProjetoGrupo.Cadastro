@@ -40,6 +40,7 @@ namespace Register.Domain.DTO
                 CNPJ = cnpj,
                 CRM = crm,
                 PersonId = personId
+                
             };
         }
         public DoctorDTO mapToDTO(Doctor doctor)
