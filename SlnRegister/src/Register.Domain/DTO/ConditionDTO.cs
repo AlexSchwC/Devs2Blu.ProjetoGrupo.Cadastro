@@ -16,20 +16,20 @@ namespace Register.Domain.DTO
         [Display(Name = "Name")]
         public string name { get; set; }
         public virtual ICollection<PatientDTO>? patientList { get; set; }
-        public Specialty mapToEntity()
+        public Condition mapToEntity()
         {
-            return new Specialty
+            return new Condition
             {
                 Id = this.id,
                 Name = this.name,
             };
         }
-        public SpecialtyDTO maptoDTO(Specialty specialty)
+        public ConditionDTO maptoDTO(Condition condition)
         {
-            return new SpecialtyDTO
+            return new ConditionDTO
             {
-                id = specialty.Id,
-                name = specialty.Name,
+                id = condition.Id,
+                name = condition.Name,
             };
         }
     }

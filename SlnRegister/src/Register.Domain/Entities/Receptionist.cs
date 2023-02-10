@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace Register.Domain.Entities
 {
-    public class Doctor
+    public class Receptionist
     {
         public int Id { get; set; }
-        public virtual Specialty? SpecialtyList { get; set; }
-        public int SpecialtyId { get; set; }
-        public string CNPJ { get; set; }
-        public string CRM { get; set; }
         public int PersonId { get; set; }
         public virtual Person? Person { get; set; }
+        public string PIS { get; set; }
     }
 }
