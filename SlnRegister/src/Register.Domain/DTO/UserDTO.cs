@@ -16,7 +16,7 @@ namespace Register.Domain.DTO
         public string username { get; set; }
         public string password { get; set; }
         public string email { get; set; }
-        public PersonTypeEnum? personType { get; set; }
+        public UserTypeEnum? userType { get; set; }
 
         public User mapToEntity()
         {
@@ -28,7 +28,7 @@ namespace Register.Domain.DTO
                 Username = this.username,
                 Password = this.password,
                 Email = this.email,
-                PersonType = this.personType,
+                UserType = this.userType,
             };
         }
 
@@ -42,7 +42,7 @@ namespace Register.Domain.DTO
                 username = user.Username,
                 password = user.Password,
                 email = user.Email,
-                personType = user.PersonType,
+                userType = user.UserType,
             };
         }
     }

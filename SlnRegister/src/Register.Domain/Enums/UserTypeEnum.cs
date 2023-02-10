@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Register.Domain.Enums
 {
-    public enum PersonTypeEnum
+    public enum UserTypeEnum
     {
         Doctor = 1,
         Patient = 2,

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Register.Domain.Contracts.Repositories
 {
-    public interface IConditionRepository : IBaseRepository<Condition>
+    public interface IUserRepository : IBaseRepository<User>
     {
     }
 }
