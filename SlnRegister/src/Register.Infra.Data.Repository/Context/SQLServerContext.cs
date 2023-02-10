@@ -1,15 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Register.Domain.Entities;
+using Register.Infra.Data.Repository.Repositories;
+using Register.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Register.Infra.Data.Repository.Contracts
-{
+namespace Register.Infra.Data.Repository.Context 
+{ 
     public class SQLServerContext : DbContext
     {
+        public SQLServerContext(DbContextOptions<SQLServerContext> options)
+            :base(options)
+        {
+
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -32,6 +39,9 @@ namespace Register.Infra.Data.Repository.Contracts
 
         public DbSet<Condition> Condition { get; set; }
         public DbSet<Specialty> Specialty { get; set; }
+        public DbSet<Person> Person { get; set; }
+        public DbSet<Patient> Patient { get; set; }
+        public DbSet<Doctor> Doctor { get; set; }
         #endregion
     }
 }
