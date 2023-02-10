@@ -13,26 +13,33 @@ namespace Register.Domain.DTO
     public class DoctorDTO
     {
         [Display(Name = "Id")]
+        [Required(ErrorMessage = "{0} is required")]
         public int id { get; set; }
-        [Display(Name = "Specification")]
+
+        [Display(Name = "Specialty")]
+        [Required(ErrorMessage = "{0} is required")]
         public int specialtyId { get; set; }
 
+        [Display(Name = "CNPJ")]
+        public string cnpj { get; set; }
+
         [Required(ErrorMessage = "{0} is required")]
-        [Display(Name = "Name")]
-        public string name { get; set; }
-        [Required(ErrorMessage = "{0} is required")]
-        [Display(Name = "Age")]
-        public string age { get; set; }
-        public virtual SpecialtyDTO? specification { get; set; }
+        [Display(Name = "CRM")]
+        public string crm { get; set; }
+
+        [Display(Name = "PersonId")]        
+        public int personId { get; set; }              
+
 
         public Doctor mapToEntity()
         {
             return new Doctor()
-            {
+            {               
                 Id = id,
                 SpecialtyId = specialtyId,
-                Name = name,
-                Age = age,
+                CNPJ = cnpj,
+                CRM = crm,
+                PersonId = personId
             };
         }
         public DoctorDTO mapToDTO(Doctor doctor)
@@ -41,8 +48,9 @@ namespace Register.Domain.DTO
             {
                 id = doctor.Id,
                 specialtyId = doctor.SpecialtyId,
-                name = doctor.Name,
-                age = doctor.Age
+                cnpj = doctor.CNPJ,
+                crm = doctor.CRM,
+                personId = doctor.PersonId
             };
         }
     }

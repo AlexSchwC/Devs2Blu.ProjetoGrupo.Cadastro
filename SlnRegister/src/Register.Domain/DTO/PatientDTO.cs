@@ -12,17 +12,16 @@ namespace Register.Domain.DTO
     public class PatientDTO
     {
         [Display(Name = "Id")]
+        [Required(ErrorMessage = "{0} is required")]
         public int id { get; set; }
+
         [Display(Name = "Condition")]
+        [Required(ErrorMessage = "{0} is required")]
         public int conditionId { get; set; }
 
-        [Required(ErrorMessage = "{0} is required")]
-        [Display(Name = "Name")]
-        public string name { get; set; }
-        [Required(ErrorMessage = "{0} is required")]
-        [Display(Name = "Age")]
-        public string age { get; set; }
-        public virtual ConditionDTO? condition { get; set; }
+        [Display(Name = "PersonId")]
+        public int personId { get; set; }
+
 
         public Patient mapToEntity()
         {
@@ -30,8 +29,7 @@ namespace Register.Domain.DTO
             {
                 Id = id,
                 ConditionId = conditionId,
-                Name = name,
-                Age = age,
+                PersonId = personId
             };
         }
         public PatientDTO mapToDTO(Patient patient)
@@ -40,10 +38,8 @@ namespace Register.Domain.DTO
             {
                 id = patient.Id,
                 conditionId = patient.ConditionId,
-                name = patient.Name,
-                age = patient.Age
+                personId = patient.PersonId
             };
         }
     }
 }
-
