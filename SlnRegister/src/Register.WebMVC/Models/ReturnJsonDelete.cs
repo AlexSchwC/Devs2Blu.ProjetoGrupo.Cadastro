@@ -1,5 +1,5 @@
 ﻿namespace Register.WebMVC.Models
-{
+{ 
     public class ReturnJsonDelete
     {
         public string status { get; set; }

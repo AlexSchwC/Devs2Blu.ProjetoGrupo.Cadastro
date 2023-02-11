@@ -57,7 +57,7 @@ namespace Register.WebMVC.Controllers
         [HttpPost]
         public async Task<JsonResult> Delete(int? id)
         {
-            var returnDel = new ReturnJsonDel()
+            var returnDel = new ReturnJsonDelete()
             {
                 status = "Success",
                 code = "200",
@@ -67,7 +67,7 @@ namespace Register.WebMVC.Controllers
             {
                 if(await _service.Delete(id ?? 0) <= 0)
                 {
-                    returnDel = new ReturnJsonDel()
+                    returnDel = new ReturnJsonDelete()
                     {
                         status = "Error",
                         code = "400"
@@ -76,7 +76,7 @@ namespace Register.WebMVC.Controllers
             }
             catch (Exception ex)
             {
-                returnDel = new ReturnJsonDel()
+                returnDel = new ReturnJsonDelete()
                 {
                     status = ex.Message,
                     code = "500",
