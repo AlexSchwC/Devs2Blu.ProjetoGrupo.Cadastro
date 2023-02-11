@@ -8,8 +8,8 @@ namespace Register.Domain.Enums
 {
     public enum UserTypeEnum
     {
-        Doctor = 1,
-        Patient = 2,
-        Receptionist = 0
+        Admin = 1,
+        Doctor = 2,
+        Patient = 3,
     }
 }
