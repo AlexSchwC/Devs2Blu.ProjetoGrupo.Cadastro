@@ -11,9 +11,9 @@ namespace Register.Domain.Entities
         public int Id { get; set; }
         public DateTime SchedulingDate { get; set; }
         public string Situation { get; set; }
-        public int idPerosn { get; set; }
+        public int PersonId { get; set; }
         public virtual Person? Person { get; set; }
-        public int idDoctor { get; set; }
+        public int DoctorId { get; set; }
         public virtual Doctor? Doctor { get; set; }
     }
 }
