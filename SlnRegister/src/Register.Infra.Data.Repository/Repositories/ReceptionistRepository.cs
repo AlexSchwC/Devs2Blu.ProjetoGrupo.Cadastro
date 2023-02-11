@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Register.Infra.Data.Repository.Repositories
 {
-    public class PersonRepository : BaseRepository<Person>, IPersonRepository
+    public class ReceptionistRepository : BaseRepository<Receptionist>, IReceptionistRepository
     {
         private readonly SQLServerContext _context;
-        public PersonRepository(SQLServerContext context) : base(context)
+        public ReceptionistRepository(SQLServerContext context) : base(context)
         {
             this._context = context;
         }
