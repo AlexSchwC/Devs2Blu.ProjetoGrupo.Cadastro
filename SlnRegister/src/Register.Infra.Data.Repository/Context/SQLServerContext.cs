@@ -40,15 +40,15 @@ namespace Register.Infra.Data.Repository.Context
 
             modelBuilder.Entity<Person>()
                 .HasData(
-                new {Id = 1, Name = "Maria Clara de Souza", Age = "25", CPF = "123.456.789-12"},
-                new { Id = 2, Name = "Paulo Moreira", Age = "47", CPF = "789.456.123-78" },
-                new { Id = 3, Name = "Rafaella Rodrigues da Silva", Age = "16", CPF = "753.159.456-58" },
-                new { Id = 4, Name = "João de Oliveira", Age = "52", CPF = "951.357.321-56" },
-                new { Id = 5, Name = "Clara Maria Moretti", Age = "24", CPF = "741.852.963-37" },
-                new { Id = 6, Name = "Ricardo Alves de Souza", Age = "31", CPF = "963.852.741-15" },
-                new { Id = 7, Name = "Helena Muller", Age = "27", CPF = "248.862.176-49" },
-                new { Id = 8, Name = "Gabriel Bugmann Vanzuita", Age = "40", CPF = "154.268.729-16" },
-                new { Id = 9, Name = "Laura Elena Fisher", Age = "38", CPF = "217.369.252-98" }
+                new {Id = 1, Name = "Maria Clara de Souza", BirthDate = new DateTime(2000, 12, 31), CPF = "123.456.789-12", Gender = GenderEnum.Feminino},
+                new { Id = 2, Name = "Paulo Moreira", BirthDate = new DateTime(2000, 12, 31), CPF = "789.456.123-78", Gender = GenderEnum.Masculino},
+                new { Id = 3, Name = "Rafaella Rodrigues da Silva", BirthDate = new DateTime(2000, 12, 31), CPF = "753.159.456-58", Gender = GenderEnum.Feminino },
+                new { Id = 4, Name = "João de Oliveira", BirthDate = new DateTime(2000, 12, 31), CPF = "951.357.321-56", Gender = GenderEnum.Masculino },
+                new { Id = 5, Name = "Clara Maria Moretti", BirthDate = new DateTime(2000, 12, 31), CPF = "741.852.963-37", Gender = GenderEnum.Feminino },
+                new { Id = 6, Name = "Ricardo Alves de Souza", BirthDate = new DateTime(2000, 12, 31), CPF = "963.852.741-15", Gender = GenderEnum.Masculino },
+                new { Id = 7, Name = "Helena Muller", BirthDate = new DateTime(2000, 12, 31), CPF = "248.862.176-49", Gender = GenderEnum.Feminino },
+                new { Id = 8, Name = "Gabriel Bugmann Vanzuita", BirthDate = new DateTime(2000, 12, 31), CPF = "154.268.729-16", Gender = GenderEnum.Masculino },
+                new { Id = 9, Name = "Laura Elena Fisher", BirthDate = new DateTime(2000, 12, 31), CPF = "217.369.252-98", Gender = GenderEnum.Feminino }
                 );
 
             modelBuilder.Entity<Patient>()
@@ -63,13 +63,6 @@ namespace Register.Infra.Data.Repository.Context
                 new {Id = 1, PersonId = 4, SpecialtyId = 4, CNPJ = "12.234.567/0001-89", CRM = "CRM/SP 123456" },
                 new { Id = 2, PersonId = 5, SpecialtyId = 1, CNPJ = "56.741.963/0001-42", CRM = "CRM/SC 456983" },
                 new { Id = 3, PersonId = 6, SpecialtyId = 2, CNPJ = "89.466.123/0001-26", CRM = "CRM/RS 123147" }
-                );
-
-            modelBuilder.Entity<Receptionist>()
-                .HasData(
-                new {Id = 1, PersonId = 7, PIS = "170.33259.50-4" },
-                new { Id = 2, PersonId = 8, PIS = "892.15933.47-9" },
-                new { Id = 3, PersonId = 9, PIS = "741.75321.32-4" }
                 );
 
             /*modelBuilder.Entity<User>()
@@ -93,7 +86,6 @@ namespace Register.Infra.Data.Repository.Context
         public DbSet<Person> People { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
-        public DbSet<Receptionist> Receptionists { get; set; }
         public DbSet<User> Users { get; set; }
         #endregion
     }

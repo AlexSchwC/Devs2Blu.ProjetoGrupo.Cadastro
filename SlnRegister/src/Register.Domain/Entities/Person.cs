@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Register.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,6 @@ namespace Register.Domain.Entities
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public string CPF { get; set; }
-        public Enum Gender { get; set; }
+        public GenderEnum Gender { get; set; }
     }
 }

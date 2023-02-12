@@ -1,6 +1,7 @@
 using Castle.Components.DictionaryAdapter;
 using Microsoft.EntityFrameworkCore;
 using Register.Domain.Contracts.Repositories;
+using Register.Domain.Contracts.Services;
 using Register.Infra.Data.Repository.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,8 +19,12 @@ builder.Services.AddScoped<IConditionRepository, IConditionRepository>();
 builder.Services.AddScoped<IDoctorRepository, IDoctorRepository>();
 builder.Services.AddScoped<IPatientRepository, IPatientRepository>();
 builder.Services.AddScoped<IPersonRepository, IPersonRepository>();
-builder.Services.AddScoped<IReceptionistRepository, IReceptionistRepository>();
+//builder.Services.AddScoped<IReceptionistRepository, IReceptionistRepository>();
 builder.Services.AddScoped<ISpecialtyRepository, ISpecialtyRepository>();
+
+
+//Services
+builder.Services.AddScoped<IConditionService, IConditionService>();
 
 var app = builder.Build();
 

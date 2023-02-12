@@ -1,0 +1,8 @@
+﻿@using Register.Domain.DTO;
+@model IEnumerable<ConditionDTO>
+
+
+
+@foreach(var item in Model){
+    <p>@item.name</p>
+}

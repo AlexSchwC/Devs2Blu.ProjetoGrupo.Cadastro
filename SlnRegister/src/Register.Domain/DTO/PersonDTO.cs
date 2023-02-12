@@ -1,4 +1,5 @@
 ﻿using Register.Domain.Entities;
+using Register.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,11 +21,15 @@ namespace Register.Domain.DTO
 
         [Display(Name = "Age")]
         [Required(ErrorMessage = "{0} is required")]
-        public string age { get; set; }
+        public DateTime birthDate { get; set; }
 
         [Display(Name = "CPF")]
         [Required(ErrorMessage = "{0} is required")]
         public string cpf { get; set; }
+
+        [Display(Name = "Gender")]
+        [Required(ErrorMessage = "{0} is required")]
+        public GenderEnum gender { get; set; }
 
         public Person mapToEntity()
         {
@@ -32,8 +37,9 @@ namespace Register.Domain.DTO
             {
                 Id = id,
                 Name = name,
-                Age = age,
-                CPF = cpf
+                BirthDate = birthDate,
+                CPF = cpf,
+                Gender = gender
             };
         }
         public PersonDTO mapToDTO(Person person)
@@ -42,8 +48,9 @@ namespace Register.Domain.DTO
             {
                 id = person.Id,
                 name = person.Name,
-                age = person.Age,
-                cpf = person.CPF
+                birthDate = person.BirthDate,
+                cpf = person.CPF,
+                gender = person.Gender,
             };
         }
     }
