@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Register.Domain.Contracts.Services;
 using Register.Domain.DTO;
+using Register.WebMVC.Models;
 
 namespace Register.WebMVC.Controllers
 {
@@ -71,37 +73,50 @@ namespace Register.WebMVC.Controllers
 
         // POST: PersonController/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, [Bind("id, name, birthDate, cpf, gender")] PersonDTO person)
+        public async Task<ActionResult> Edit(int id, [Bind("id, name, birthDate, cpf, gender")] PersonDTO person)
         {
-            try
+            if(id != person.id)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: PersonController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
+            if (ModelState.IsValid)
+            {
+                if(await _service.Save(person) > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                
+            }
+            return View(person);
         }
 
         // POST: PersonController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<JsonResult> Delete(int? id)
         {
+            var resultDel = new ReturnJsonDelete()
+            {
+                status = "Error",
+                code = "400"      
+            };
+
             try
             {
-                return RedirectToAction(nameof(Index));
+                if(await _service.Delete(id ?? 0) > 0)
+                {
+                    resultDel.status = "Success";
+                    resultDel.code = "200";
+                    return Json(resultDel);
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                resultDel.status= ex.Message;
+                resultDel.code= "500";
             }
+
+            return Json(resultDel);
         }
     }
 }
