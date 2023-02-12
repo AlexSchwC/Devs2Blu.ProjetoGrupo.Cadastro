@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Register.Domain.Contracts.Services
 {
-    public interface ISpecialtyService : IBaseService<SpecialtyDTO>
+    public interface ISpecialtyService : IBaseService
     {
     }
 }

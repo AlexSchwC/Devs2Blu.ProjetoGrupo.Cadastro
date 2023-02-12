@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Register.Application.Service.SQLServerServices
 {
-    public class BaseService<T> : IBaseService<T> where T:class
+    public class BaseService<T> where T:class
     {
         private readonly IBaseRepository<T> _repository;
 

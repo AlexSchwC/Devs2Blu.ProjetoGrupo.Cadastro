@@ -16,12 +16,12 @@ namespace Register.WebMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(_service.GetAll());
+            return View(_service.GetAll<List<SpecialtyDTO>>());
         }
 
         public JsonResult ListJson()
         {
-            return Json(_service.GetAll());
+            return Json(_service.GetAll<List<SpecialtyDTO>>());
         }
 
         public IActionResult Create()
@@ -47,7 +47,7 @@ namespace Register.WebMVC.Controllers
             {
                 return NotFound();
             }
-            var condition = await _service.GetById(id);
+            var condition = await _service.GetById<SpecialtyDTO>(id);
             return View(condition);
         }
 

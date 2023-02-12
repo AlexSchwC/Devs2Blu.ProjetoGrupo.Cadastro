@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Register.Domain.Contracts.Services
 {
-    public interface IUserService : IBaseService<UserDTO>
+    public interface IUserService : IBaseService
     {
     }
 }

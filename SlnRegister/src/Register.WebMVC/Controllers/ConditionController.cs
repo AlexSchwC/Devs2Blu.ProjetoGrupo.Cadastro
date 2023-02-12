@@ -2,6 +2,7 @@
 using Register.Domain.Contracts.Services;
 using Register.Domain.DTO;
 using Register.WebMVC.Models;
+using System.Collections.Generic;
 
 namespace Register.WebMVC.Controllers
 {
@@ -16,12 +17,12 @@ namespace Register.WebMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(_service.GetAll());
+            return View(_service.GetAll<List<ConditionDTO>>());
         }
 
         public JsonResult ListJson()
         {
-            return Json(_service.GetAll());
+            return Json(_service.GetAll<List<ConditionDTO>>());
         }
 
         public IActionResult Create()
@@ -47,7 +48,7 @@ namespace Register.WebMVC.Controllers
             {
                 return NotFound();
             }
-            var condition = await _service.GetById(id);
+            var condition = await _service.GetById<ConditionDTO>(id);
             return View(condition);
         }
 

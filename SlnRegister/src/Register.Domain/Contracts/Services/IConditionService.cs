@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Register.Domain.Contracts.Services
 {
-    public interface IConditionService : IBaseService<ConditionDTO>
+    public interface IConditionService : IBaseService
     {
     }
 }
