@@ -1,0 +1,19 @@
+﻿@model Register.Domain.DTO.PatientDTO
+
+<form>
+  <div class="mb-3">
+        <select class="form-select" aria-label="ConditionSelect">
+            <option selected>Condição do Paciente</option>
+            <option value="1">Crítico</option>
+            <option value="2">Sério</option>
+            <option value="3">Razoável</option>
+            <option value="4">Bom</option>
+            <option value="5">Indeterminado</option>
+        </select>
+  </div>
+   <div class="mb-3">
+          <label for="MRNumberInput" class="form-label">Número do Prontuário</label>
+        <input type="number" class="form-control" id="MRNumber">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

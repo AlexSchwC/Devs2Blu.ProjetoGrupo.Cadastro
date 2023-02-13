@@ -9,7 +9,6 @@ namespace Register.Domain.Entities
     public class Doctor
     {
         public int Id { get; set; }
-        public virtual Specialty? SpecialtyList { get; set; }
         public int SpecialtyId { get; set; }
         public string CNPJ { get; set; }
         public string CRM { get; set; }

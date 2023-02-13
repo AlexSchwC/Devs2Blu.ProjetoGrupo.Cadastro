@@ -53,9 +53,9 @@ namespace Register.Infra.Data.Repository.Context
 
             modelBuilder.Entity<Patient>()
                 .HasData(
-                new {Id = 1, PersonId = 1, ConditionId = 3},
-                new { Id = 2, PersonId = 2, ConditionId = 3 },
-                new { Id = 3, PersonId = 3, ConditionId = 1 }
+                new {Id = 1, MRNumber = 1, PersonId = 1, ConditionId = 3},
+                new { Id = 2, MRNumber = 2, PersonId = 2, ConditionId = 3 },
+                new { Id = 3, MRNumber = 3, PersonId = 3, ConditionId = 1 }
                 );
 
             modelBuilder.Entity<Doctor>()
