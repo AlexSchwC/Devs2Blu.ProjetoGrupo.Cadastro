@@ -16,7 +16,7 @@ namespace Register.WebMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(_service.GetAll<List<PatientDTO>>());
+            return View(_service.GetAll());
         }
 
         public IActionResult Create()
@@ -25,7 +25,7 @@ namespace Register.WebMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("id, conditionId, personId")] PatientDTO patient)
+        public async Task<IActionResult> Create([Bind("id, conditionId, personId, numMR")] PatientDTO patient)
         {
             if(ModelState.IsValid)
             {
@@ -38,12 +38,12 @@ namespace Register.WebMVC.Controllers
         {
             if(id == null) return NotFound();   
 
-            var patient = await _service.GetById<PatientDTO>(id);
+            var patient = await _service.GetById(id);
             return View(patient);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int? id, [Bind("id, conditionId, conditionId")] PatientDTO patient)
+        public async Task<IActionResult> Edit(int? id, [Bind("id, conditionId, conditionId, numMR")] PatientDTO patient)
         {
             if (!(id == patient.id)) return NotFound();
 

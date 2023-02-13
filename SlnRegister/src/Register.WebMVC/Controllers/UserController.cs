@@ -16,7 +16,7 @@ namespace Register.WebMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(_service.GetAll<List<UserDTO>>());
+            return View(_service.GetAll());
         }
 
         public IActionResult Create()
@@ -38,7 +38,7 @@ namespace Register.WebMVC.Controllers
         {
             if(id == null) return NotFound();
 
-            var user = await _service.GetById<UserDTO>(id);
+            var user = await _service.GetById(id);
             return View(user);
         }
 

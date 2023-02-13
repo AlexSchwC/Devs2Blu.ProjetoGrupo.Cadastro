@@ -13,5 +13,6 @@ namespace Register.Domain.Entities
         public virtual Condition? ConditionList { get; set; }
         public int PersonId { get; set; }
         public virtual Person? Person { get; set; }
+        public int NumMR { get; set; }
     }
 }

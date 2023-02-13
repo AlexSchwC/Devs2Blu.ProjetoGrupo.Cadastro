@@ -18,12 +18,12 @@ namespace Register.WebMVC.Controllers
 
         public ActionResult Index()
         {
-            return View(_service.GetAll<List<PersonDTO>>());
+            return View(_service.GetAll());
         }
 
         public JsonResult ListJson()
         {
-            return Json(_service.GetAll<List<PersonDTO>>());
+            return Json(_service.GetAll());
         }
 
         // GET: PersonController/Details/5
@@ -34,7 +34,7 @@ namespace Register.WebMVC.Controllers
                 return NotFound();
             }
 
-            var person = await _service.GetById<PersonDTO>(id);
+            var person = await _service.GetById(id);
             return View(person);
         }
 
@@ -66,7 +66,7 @@ namespace Register.WebMVC.Controllers
                 return NotFound();
             }
 
-            var person = await _service.GetById<PersonDTO>(id);
+            var person = await _service.GetById(id);
 
             return View(person);
         }
