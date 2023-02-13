@@ -25,7 +25,7 @@ namespace Register.WebMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("id, conditionId, personId")] PatientDTO patient)
+        public async Task<IActionResult> Create([Bind("id, conditionId, personId, numMR")] PatientDTO patient)
         {
             if(ModelState.IsValid)
             {
@@ -43,7 +43,7 @@ namespace Register.WebMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int? id, [Bind("id, conditionId, conditionId")] PatientDTO patient)
+        public async Task<IActionResult> Edit(int? id, [Bind("id, conditionId, conditionId, numMR")] PatientDTO patient)
         {
             if (!(id == patient.id)) return NotFound();
 

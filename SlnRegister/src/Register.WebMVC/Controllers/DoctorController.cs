@@ -50,8 +50,8 @@ namespace Register.WebMVC.Controllers
             {
                 return NotFound();
             }
-            var category = await _doctorService.GetById(id);
-            return View(category);
+            var doctor = await _doctorService.GetById(id);
+            return View(doctor);
         }
 
         [HttpPost]

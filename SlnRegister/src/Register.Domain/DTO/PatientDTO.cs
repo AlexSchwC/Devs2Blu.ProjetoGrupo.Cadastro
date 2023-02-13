@@ -22,6 +22,14 @@ namespace Register.Domain.DTO
         [Display(Name = "PersonId")]
         public int personId { get; set; }
 
+        [Display(Name = "NumMR")]
+        public int numMR { get; set; }
+
+        public virtual PersonDTO? person { get; set; }
+        public virtual ConditionDTO? condition { get; set; }
+
+        
+
 
         public Patient mapToEntity()
         {
@@ -29,7 +37,8 @@ namespace Register.Domain.DTO
             {
                 Id = id,
                 ConditionId = conditionId,
-                PersonId = personId
+                PersonId = personId,
+                NumMR = numMR
             };
         }
         public PatientDTO mapToDTO(Patient patient)
@@ -38,7 +47,8 @@ namespace Register.Domain.DTO
             {
                 id = patient.Id,
                 conditionId = patient.ConditionId,
-                personId = patient.PersonId
+                personId = patient.PersonId,
+                numMR = patient.NumMR
             };
         }
     }

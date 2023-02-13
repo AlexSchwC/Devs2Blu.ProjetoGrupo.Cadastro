@@ -2,6 +2,7 @@
 using Register.Domain.Contracts.Services;
 using Register.Domain.DTO;
 using Register.WebMVC.Models;
+using System.Collections.Generic;
 
 namespace Register.WebMVC.Controllers
 {

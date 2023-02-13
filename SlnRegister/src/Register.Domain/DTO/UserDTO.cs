@@ -12,7 +12,7 @@ namespace Register.Domain.DTO
     {
         public int id { get; set; }
         public int personId { get; set; }
-        public virtual Person? person { get; set; }
+        public virtual PersonDTO? person { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public string email { get; set; }
@@ -24,7 +24,6 @@ namespace Register.Domain.DTO
             {
                 Id = this.id,
                 PersonId = this.personId,
-                Person = this.person,
                 Username = this.username,
                 Password = this.password,
                 Email = this.email,
@@ -38,7 +37,6 @@ namespace Register.Domain.DTO
             {
                 id = user.Id,
                 personId = user.PersonId,
-                person = user.Person,
                 username = user.Username,
                 password = user.Password,
                 email = user.Email,
