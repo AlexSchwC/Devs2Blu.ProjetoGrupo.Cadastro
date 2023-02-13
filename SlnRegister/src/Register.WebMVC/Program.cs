@@ -1,8 +1,10 @@
 using Castle.Components.DictionaryAdapter;
 using Microsoft.EntityFrameworkCore;
+using Register.Application.Service.SQLServerServices;
 using Register.Domain.Contracts.Repositories;
 using Register.Domain.Contracts.Services;
 using Register.Infra.Data.Repository.Context;
+using Register.Infra.Data.Repository.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,16 +17,23 @@ builder.Services.AddDbContext<SQLServerContext>
     (options => options.UseSqlServer(connectionStringUser));
 
 //Repositories
-builder.Services.AddScoped<IConditionRepository, IConditionRepository>();
-builder.Services.AddScoped<IDoctorRepository, IDoctorRepository>();
-builder.Services.AddScoped<IPatientRepository, IPatientRepository>();
-builder.Services.AddScoped<IPersonRepository, IPersonRepository>();
-//builder.Services.AddScoped<IReceptionistRepository, IReceptionistRepository>();
-builder.Services.AddScoped<ISpecialtyRepository, ISpecialtyRepository>();
+builder.Services.AddScoped<IConditionRepository, ConditionRepository>();
+builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<ISpecialtyRepository, SpecialtyRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 //Services
-builder.Services.AddScoped<IConditionService, IConditionService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
+builder.Services.AddScoped<IConditionService, ConditionService>();
+builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddScoped<IPatientService, PatientService>();
+builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<ISpecialtyService, SpecialtyService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

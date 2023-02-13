@@ -22,6 +22,8 @@ namespace Register.Domain.DTO
         [Display(Name = "PersonId")]
         public int personId { get; set; }
 
+        public virtual PersonDTO? person { get; set; }
+        public virtual ConditionDTO? condition { get; set; }
 
         public Patient mapToEntity()
         {

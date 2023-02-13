@@ -28,8 +28,10 @@ namespace Register.Domain.DTO
         public string crm { get; set; }
 
         [Display(Name = "PersonId")]        
-        public int personId { get; set; }              
+        public int personId { get; set; }
 
+        public virtual PersonDTO? person { get; set; }
+        public virtual SpecialtyDTO? specialty { get; set; }
 
         public Doctor mapToEntity()
         {

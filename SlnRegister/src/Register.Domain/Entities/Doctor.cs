@@ -15,5 +15,6 @@ namespace Register.Domain.Entities
         public string CRM { get; set; }
         public int PersonId { get; set; }
         public virtual Person? Person { get; set; }
+        public virtual Specialty? Specialty { get; set; }
     }
 }
