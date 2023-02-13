@@ -1,0 +1,18 @@
+﻿@model Register.Domain.DTO.DoctorDTO
+
+<form>
+  <div class="mb-3">
+        <select class="form-select" aria-label="SpecialtySelect">
+            <option selected>Especialidade Médica</option>
+            <option value="1">Pediatria</option>
+            <option value="2">Cardiologia</option>
+            <option value="3">Dermatologia</option>
+            <option value="4">Dastroenterologia</option>
+        </select>
+  </div>
+   <div class="mb-3">
+          <label for="CRMInput" class="form-label">CRM</label>
+        <input type="number" class="form-control" id="CRMInput">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
