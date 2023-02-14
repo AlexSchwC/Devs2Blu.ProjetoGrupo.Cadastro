@@ -19,7 +19,7 @@ namespace Register.WebMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(_doctorService.GetAll());
+            return View(await _doctorService.GetAll());
         }
 
         public JsonResult ListJson()
@@ -27,9 +27,9 @@ namespace Register.WebMVC.Controllers
             return Json(_doctorService.GetAll());
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["specialtyId"] = new SelectList(_specialtyService.GetAll(), "id", "name", "Select...");
+            ViewData["specialtyId"] = new SelectList(await _specialtyService.GetAll(), "id", "name", "Select...");
             return View();
         }
         [HttpPost]
@@ -41,7 +41,7 @@ namespace Register.WebMVC.Controllers
                 if (await _doctorService.Save(doctor) > 0)
                     return RedirectToAction(nameof(Index));
             }
-            ViewData["specialtyId"] = new SelectList(_specialtyService.GetAll(), "id", "name", doctor.specialtyId);
+            ViewData["specialtyId"] = new SelectList(await _specialtyService.GetAll(), "id", "name", doctor.specialtyId);
             return View(doctor);
         }
         public async Task<IActionResult> Edit(int id)

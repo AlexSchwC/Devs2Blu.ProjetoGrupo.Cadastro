@@ -12,9 +12,11 @@ namespace Register.Application.Service.SQLServerServices
     public class AddressService : IAddressService
     {
             private readonly IAddressRepository _repository;
-            public AddressService(IAddressRepository repository)
+            private readonly IPersonRepository _personRepository;
+            public AddressService(IAddressRepository repository, IPersonRepository personRepository)
             {
                 this._repository = repository;
+                this._personRepository = personRepository;
             }
 
             public async Task<int> Delete(int id)
@@ -23,7 +25,7 @@ namespace Register.Application.Service.SQLServerServices
                 return await _repository.Delete(address);
             }
 
-            public List<AddressDTO> GetAll()
+            public async Task<List<AddressDTO>> GetAll()
             {
                 List<AddressDTO> listaDTO = new List<AddressDTO>();
                 foreach (var address in _repository.GetAll())
@@ -32,7 +34,7 @@ namespace Register.Application.Service.SQLServerServices
                     var pessoadto = new PersonDTO();
 
                     var addressdto = addressNewdto.mapToDTO(address);
-                    addressdto.person = pessoadto.mapToDTO(address.Person);
+                    addressdto.person = pessoadto.mapToDTO(await _personRepository.GetById(address.PersonId));
 
                     listaDTO.Add(addressdto);
                 }
