@@ -1,5 +1,5 @@
 ﻿@using Register.Domain.DTO;
-@model IEnumerable<PatientDTO>
+@model IEnumerable<DoctorDTO>
 
 <table class="table table-hover">
     <thead>
@@ -9,8 +9,8 @@
             <th scope="col">CPF</th>
             <th scope="col">Nascimento</th>
             <th scope="col">Gênero</th>
-            <th scope="col">Condição</th>
-            <th scope="col">Nº Prontuário</th>
+            <th scope="col">Especialidade</th>
+            <th scope="col">CRM</th>
         </tr>
     </thead>
     <tbody>
@@ -23,11 +23,10 @@
                 <td>@item.person.cpf</td>
                 <td>@item.person.birthDate</td>
                 <td>@item.person.gender</td>
-                <td>@item.condition.name</td>
-                <td>@item.mrNumber</td>
+                <td>@item.specialty.name</td>
+                <td>@item.crm</td>
                 </th>
             }
         </tr>
     </tbody>
 </table>
-
