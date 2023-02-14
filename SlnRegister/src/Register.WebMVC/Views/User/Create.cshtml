@@ -1,0 +1,25 @@
+﻿@model Register.Domain.DTO.UserDTO
+
+<form>
+    <div class="mb-3">
+        <label for="EmailInput" class="form-label">Email</label>
+        <input type="email" class="form-control" id="EmailInput">
+    </div>
+   <div class="mb-3">
+          <label for="UsernameInput" class="form-label">Nome de Usuário</label>
+        <input type="text" class="form-control" id="UsernameInput">
+  </div>
+   <div class="mb-3">
+            <label for="PasswordInput" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="PasswordInput">
+  </div>
+   <div class="mb-3">
+          <select class="form-select" aria-label="UserTypeSelect">
+            <option selected>Tipo de Usuário</option>
+            <option value="1">Administrador</option>
+            <option value="2">Médico</option>
+            <option value="3">Paciente</option>
+        </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
