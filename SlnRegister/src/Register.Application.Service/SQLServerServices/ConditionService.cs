@@ -25,7 +25,7 @@ namespace Register.Application.Service.SQLServerServices
             return await _repository.Delete(condition);
         }
 
-        public List<ConditionDTO> GetAll()
+        public async Task<List<ConditionDTO>> GetAll()
         {
             return _repository.GetAll().Select(c => new ConditionDTO()
             {

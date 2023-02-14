@@ -16,9 +16,9 @@ namespace Register.WebMVC.Controllers
             _service = service;
         }
 
-        public ActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_service.GetAll());
+            return View(await _service.GetAll());
         }
 
         public JsonResult ListJson()

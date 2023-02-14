@@ -12,9 +12,13 @@ namespace Register.Application.Service.SQLServerServices
     public class PatientService : IPatientService
     {
         private readonly IPatientRepository _repository;
-        public PatientService(IPatientRepository repository)
+        private readonly IPersonRepository _personRepository;
+        private readonly IConditionRepository _conditionRepository;
+        public PatientService(IPatientRepository repository, IPersonRepository personRepository, IConditionRepository conditionRepository)
         {
             this._repository = repository;
+            _personRepository = personRepository;
+            _conditionRepository = conditionRepository;
         }
 
         public async Task<int> Delete(int id)
@@ -23,16 +27,19 @@ namespace Register.Application.Service.SQLServerServices
             return await _repository.Delete(patient);
         }
 
-        public List<PatientDTO> GetAll()
+        public async Task<List<PatientDTO>> GetAll()
         {
             List<PatientDTO> listaDTO = new List<PatientDTO>();
-            foreach (var patient in _repository.GetAll())
+            var listaRepository = _repository.GetAll();
+            foreach (var patient in listaRepository)
             {
                 var patientdto = new PatientDTO();
                 var pessoadto = new PersonDTO();
+                var conddto = new ConditionDTO();
 
                 var patdto = patientdto.mapToDTO(patient);
-                patdto.person = pessoadto.mapToDTO(patient.Person);
+                patdto.person = pessoadto.mapToDTO(await _personRepository.GetById(patient.PersonId));
+                patdto.condition = conddto.maptoDTO(await _conditionRepository.GetById(patient.ConditionId));
 
                 listaDTO.Add(patdto);
             }

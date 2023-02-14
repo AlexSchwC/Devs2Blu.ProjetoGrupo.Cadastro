@@ -12,9 +12,11 @@ namespace Register.Application.Service.SQLServerServices
     public class UserService : IUserService
     {
         private readonly IUserRepository _repository;
-        public UserService(IUserRepository repository)
+        private readonly IPersonRepository _personRepository;
+        public UserService(IUserRepository repository, IPersonRepository personRepository)
         {
             this._repository = repository;
+            _personRepository = personRepository;
         }
 
         public async Task<int> Delete(int id)
@@ -23,7 +25,7 @@ namespace Register.Application.Service.SQLServerServices
             return await _repository.Delete(user);
         }
 
-        public List<UserDTO> GetAll()
+        public async Task<List<UserDTO>> GetAll()
         {
             List<UserDTO> listaDTO = new List<UserDTO>();
             foreach (var user in _repository.GetAll())
@@ -32,7 +34,7 @@ namespace Register.Application.Service.SQLServerServices
                 var pessoadto = new PersonDTO();
 
                 var userdto = userNewdto.mapToDTO(user);
-                userdto.person = pessoadto.mapToDTO(user.Person);
+                userdto.person = pessoadto.mapToDTO(await _personRepository.GetById(user.PersonId));
 
                 listaDTO.Add(userdto);
             }

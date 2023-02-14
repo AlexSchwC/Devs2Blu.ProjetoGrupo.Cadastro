@@ -23,7 +23,7 @@ namespace Register.Application.Service.SQLServerServices
             return await _repository.Delete(specialty);
         }
 
-        public List<SpecialtyDTO> GetAll()
+        public async Task<List<SpecialtyDTO>> GetAll()
         {
             return _repository.GetAll().Select(c => new SpecialtyDTO()
             {

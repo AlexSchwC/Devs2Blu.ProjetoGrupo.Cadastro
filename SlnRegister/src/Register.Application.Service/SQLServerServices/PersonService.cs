@@ -23,7 +23,7 @@ namespace Register.Application.Service.SQLServerServices
             return await _repository.Delete(person);
         }
 
-        public List<PersonDTO> GetAll()
+        public async Task<List<PersonDTO>> GetAll()
         {
             List<PersonDTO> listaDTO = new List<PersonDTO>();
             foreach (var person in _repository.GetAll())

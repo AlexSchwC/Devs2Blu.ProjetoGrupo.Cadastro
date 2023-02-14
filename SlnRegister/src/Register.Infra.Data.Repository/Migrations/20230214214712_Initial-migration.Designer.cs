@@ -12,7 +12,7 @@ using Register.Infra.Data.Repository.Context;
 namespace Register.Infra.Data.Repository.Migrations
 {
     [DbContext(typeof(SQLServerContext))]
-    [Migration("20230213193058_Initial-migration")]
+    [Migration("20230214214712_Initial-migration")]
     partial class Initialmigration
     {
         /// <inheritdoc />
