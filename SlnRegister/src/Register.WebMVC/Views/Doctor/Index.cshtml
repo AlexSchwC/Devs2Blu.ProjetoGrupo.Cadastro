@@ -1,7 +1,7 @@
 ﻿@using Register.Domain.DTO;
 @model IEnumerable<DoctorDTO>
 
-<table class="table table-hover">
+<table class="table table-hover" id="table-doctor">
     <thead>
         <tr>
             <th scope="col">ID</th>
@@ -11,22 +11,49 @@
             <th scope="col">Gênero</th>
             <th scope="col">Especialidade</th>
             <th scope="col">CRM</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr>
             @foreach (var item in Model)
             {
-                <th>
-                <td>@item.id</td>
-                <td>@item.person.name</td>
-                <td>@item.person.cpf</td>
-                <td>@item.person.birthDate</td>
-                <td>@item.person.gender</td>
-                <td>@item.specialty.name</td>
-                <td>@item.crm</td>
-                </th>
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.person.name</td>
+                    <td>@item.person.cpf</td>
+                    <td>@item.person.birthDate</td>
+                    <td>@item.person.gender</td>
+                    <td>@item.specialty.name</td>
+                    <td>@item.crm</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                        <a class="btn btn-danger" href="#" onclick="deleteDoctor(@item.id)">Delete</a>
+                    </td>
+                </tr>
+                
             }
-        </tr>
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        const deleteDoctor = (id) => {
+            msgModalMessage(`Deseja excluir o doutor ${id}?`, () => {
+                $.ajax({
+                    url: `@Url.Action("Delete")`,
+                    method: 'POST',
+                    data: {
+                        id: id
+                    },
+                    success: (resp) => {
+                        if (resp.code == '200') {
+                            liveToastMessage(`O registro ${id} foi excluído com sucesso`, 'Delete');
+                            setTimeout(() => { window.location.reload(); }, 4000);
+                        }
+                    }
+                });
+                closeModalMessage();
+            });
+        }
+    </script>
+}
