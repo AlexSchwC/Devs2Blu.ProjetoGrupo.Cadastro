@@ -49,3 +49,27 @@
         }
     </tbody>
 </table>
+
+
+@section Scripts {
+    <script>
+        const deletePerson = (id) => {
+            msgModalMessage(`Deseja excluir a pessoa ${id}?`, () => {
+                $.ajax({
+                    url: `@Url.Action("Delete")`,
+                    method: 'POST',
+                    data: {
+                        id : id
+                    },
+                    success: (resp) => {
+                        if(resp.code == '200') {
+                            liveToastMessage(`O registro ${id} foi excluído com sucesso`, 'Person');
+                            setTimeout(() => {window.location.reload();}, 4000);
+                        }
+                    }
+                });
+                closeModalMessage();
+            });
+        }
+    </script>
+}
