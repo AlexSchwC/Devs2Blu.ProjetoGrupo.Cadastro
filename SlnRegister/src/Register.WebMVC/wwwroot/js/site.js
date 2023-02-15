@@ -2,6 +2,7 @@
 $(document).ready(() => {
     console.log("Cadastro Hospitalar - Script Loaded")
     getDataTable('#table-person');
+    getDataTable('#table-patient');
 });
 
 liveToastMessage = (message, origin) => {
