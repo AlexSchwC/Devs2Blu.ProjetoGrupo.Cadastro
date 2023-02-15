@@ -26,7 +26,7 @@ namespace Register.Infra.Data.Repository.Repositories
         {
             return this._sqlContext.Set<T>();
         }
-        public async Task<T> GetById(int id)
+        public async Task<T> GetById(int? id)
         {
             return await this._sqlContext.Set<T>().FindAsync(id);
         }
