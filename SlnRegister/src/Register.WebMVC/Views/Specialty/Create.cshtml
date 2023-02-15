@@ -1,0 +1,21 @@
+﻿@model Register.Domain.DTO.SpecialtyDTO
+
+<form asp-controller="Specialty" asp-action="Create" method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <div class="form-group text-dark">
+                    <label asp-for="name" for="name">Especialidade:</label>
+                    <input asp-for="name" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Informe a especialidade">
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary btn-block w-100" />
+                    <a class="btn btn-dark btn-block w-100 mt-3" asp-action="Index">Voltar para Lista</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>
