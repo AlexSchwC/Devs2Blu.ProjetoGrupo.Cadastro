@@ -51,6 +51,7 @@ namespace Register.WebMVC.Controllers
                 return NotFound();
             }
             var doctor = await _doctorService.GetById(id);
+            ViewData["specialtyId"] = new SelectList(await _specialtyService.GetAll(), "id", "name", doctor.specialtyId);
             return View(doctor);
         }
 
@@ -66,6 +67,7 @@ namespace Register.WebMVC.Controllers
                 if (await _doctorService.Save(doctor) > 0)
                     return RedirectToAction(nameof(Index));
             }
+            ViewData["specialtyId"] = new SelectList(await _specialtyService.GetAll(), "id", "name", doctor.specialtyId);
             return View(doctor);
         }
 

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Register.Application.Service.SQLServerServices;
 using Register.Domain.Contracts.Services;
 using Register.Domain.DTO;
 using Register.WebMVC.Models;
@@ -8,10 +10,12 @@ namespace Register.WebMVC.Controllers
     public class PatientController : Controller
     {
         private readonly IPatientService _service;
+        private readonly IConditionService _conditionService;
 
-        public PatientController(IPatientService service)
+        public PatientController(IPatientService service, IConditionService conditionService)
         {
             _service = service;
+            _conditionService = conditionService;
         }
 
         public async Task<IActionResult> Index()
@@ -19,8 +23,9 @@ namespace Register.WebMVC.Controllers
             return View(await _service.GetAll());
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewData["conditionId"] = new SelectList(await _conditionService.GetAll(), "id", "name", "Select...");
             return View();
         }
 
@@ -31,6 +36,7 @@ namespace Register.WebMVC.Controllers
             {
                 if (await _service.Save(patient) > 0) return RedirectToAction(nameof(Index)); 
             }
+            ViewData["conditionId"] = new SelectList(await _conditionService.GetAll(), "id", "name", "Select...");
             return View(patient);
         }
 
@@ -39,11 +45,12 @@ namespace Register.WebMVC.Controllers
             if(id == null) return NotFound();   
 
             var patient = await _service.GetById(id);
+            ViewData["conditionId"] = new SelectList(await _conditionService.GetAll(), "id", "name", "Select...");
             return View(patient);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int? id, [Bind("id, conditionId, conditionId, numMR")] PatientDTO patient)
+        public async Task<IActionResult> Edit(int? id, [Bind("id, personId, conditionId, mrNumber")] PatientDTO patient)
         {
             if (!(id == patient.id)) return NotFound();
 
@@ -51,6 +58,7 @@ namespace Register.WebMVC.Controllers
             {
                 if (await _service.Save(patient) > 0) return RedirectToAction(nameof(Index));
             }
+            ViewData["conditionId"] = new SelectList(await _conditionService.GetAll(), "id", "name", "Select...");
             return View(patient);
         }
 
