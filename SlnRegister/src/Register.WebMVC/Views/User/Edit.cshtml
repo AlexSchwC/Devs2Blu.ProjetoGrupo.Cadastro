@@ -1,0 +1,54 @@
+﻿@using Register.Domain.DTO
+@using Register.Domain.Enums;
+@model UserDTO
+
+<form asp-controller="User" asp-action="Edit" method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <div class="form-group">
+                    <input asp-for="id" type="hidden" class="form-control" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" asp-for="personId" class="form-control" asp-items="ViewBag.personId">
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="username" for="username" class="color-label">Username: </label>
+                    <input asp-for="username" class="form-control">
+                    <span asp-validation-for="username" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="password" for="password" class="color-label">Password: </label>
+                    <input asp-for="password" type="password" class="form-control">
+                    <span asp-validation-for="password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="email" for="email" class="color-label">Email: </label>
+                    <input asp-for="email" class="form-control">
+                    <span asp-validation-for="email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-2 ">
+                    <label asp-for="userType"></label>
+                    <select asp-for="userType" class="form-control">
+                        <option value="0">Selecione</option>
+                        <option value="@UserTypeEnum.Admin">Administrador</option>
+                        <option value="@UserTypeEnum.Doctor">Médico</option>
+                        <option value="@UserTypeEnum.Patient">Paciente</option>
+                    </select>
+                    <span asp-validation-for="userType" class="text-danger"></span>
+                </div>
+
+                <div class="buttons-edit-create form-group mt-3">
+                    <input type="submit" class="btn btn-warning w-100 btn-block" value="Editar">
+                    <a class="btn btn-dark btn-block w-100 mt-3" asp-action="Index">Back to List</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

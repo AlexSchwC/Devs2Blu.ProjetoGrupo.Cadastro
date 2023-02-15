@@ -1,0 +1,50 @@
+﻿@using Register.Domain.DTO
+@using Register.Domain.Enums;
+@model PersonDTO
+
+<form asp-controller="Person" asp-action="Edit" method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <div class="form-group">
+                    <input asp-for="id" type="hidden" class="form-control" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="name" for="name" class="color-label">Nome: </label>
+                    <input asp-for="name" class="form-control">
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="cpf" for="cpf" class="color-label">CPF: </label>
+                    <input asp-for="cpf" class="form-control">
+                    <span asp-validation-for="cpf" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="birthDate" for="birthDate" class="color-label">Data de Nascimento: </label>
+                    <input asp-for="birthDate" class="form-control">
+                    <span asp-validation-for="birthDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-2 ">
+                    <label asp-for="gender"></label>
+                    <select asp-for="gender" class="form-control">
+                        <option value="0">Selecione</option>
+                        <option value="@GenderEnum.Feminino">Feminino</option>
+                        <option value="@GenderEnum.Masculino">Masculino</option>
+                        <option value="@GenderEnum.NaoInformado">Outros</option>
+                    </select>
+                    <span asp-validation-for="gender" class="text-danger"></span>
+                </div>
+
+                <div class="buttons-edit-create form-group mt-3">
+                    <input type="submit" class="btn btn-warning w-100 btn-block" value="Editar">
+                    <a class="btn btn-dark btn-block w-100 mt-3" asp-action="Index">Back to List</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
