@@ -12,8 +12,8 @@ using Register.Infra.Data.Repository.Context;
 namespace Register.Infra.Data.Repository.Migrations
 {
     [DbContext(typeof(SQLServerContext))]
-    [Migration("20230214214712_Initial-migration")]
-    partial class Initialmigration
+    [Migration("20230215223124_CadastroHospitalar")]
+    partial class CadastroHospitalar
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,136 @@ namespace Register.Infra.Data.Repository.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Register.Domain.Entities.Address", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("District")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PersonId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("Address");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            City = "Blumenau",
+                            District = "SC",
+                            Number = "123",
+                            PersonId = 1,
+                            PostalCode = "89012-412",
+                            Street = "Rua Curitiba"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "Blumenau",
+                            District = "SC",
+                            Number = "453",
+                            PersonId = 2,
+                            PostalCode = "89051-260",
+                            Street = "Rua Pedro Francisco Cordeiro"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            City = "Blumenau",
+                            District = "SC",
+                            Number = "1963",
+                            PersonId = 3,
+                            PostalCode = "89051-170",
+                            Street = "Rua Caiena"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            City = "Blumenau",
+                            District = "SC",
+                            Number = "2587",
+                            PersonId = 4,
+                            PostalCode = "89046-636",
+                            Street = "Rua Áustria"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            City = "Blumenau",
+                            District = "SC",
+                            Number = "8746",
+                            PersonId = 5,
+                            PostalCode = "89027-351",
+                            Street = "Rua Bruno Hort"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            City = "Blumenau",
+                            District = "SC",
+                            Number = "7895",
+                            PersonId = 6,
+                            PostalCode = "89022-275",
+                            Street = "Rua Turvo"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            City = "Blumenau",
+                            District = "SC",
+                            Number = "753",
+                            PersonId = 7,
+                            PostalCode = "89095-510",
+                            Street = "Rua Otto Manzke"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            City = "Blumenau",
+                            District = "SC",
+                            Number = "951",
+                            PersonId = 8,
+                            PostalCode = "89057-496",
+                            Street = "Rua Augusto Setter"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            City = "Blumenau",
+                            District = "SC",
+                            Number = "852",
+                            PersonId = 9,
+                            PostalCode = "89095-525",
+                            Street = "Rua Três Primos"
+                        });
+                });
 
             modelBuilder.Entity("Register.Domain.Entities.Condition", b =>
                 {
@@ -134,10 +264,10 @@ namespace Register.Infra.Data.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ConditionId")
+                    b.Property<int?>("ConditionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MRNumber")
+                    b.Property<int?>("MRNumber")
                         .HasColumnType("int");
 
                     b.Property<int>("PersonId")
@@ -348,6 +478,15 @@ namespace Register.Infra.Data.Repository.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Register.Domain.Entities.Address", b =>
+                {
+                    b.HasOne("Register.Domain.Entities.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId");
+
+                    b.Navigation("Person");
+                });
+
             modelBuilder.Entity("Register.Domain.Entities.Doctor", b =>
                 {
                     b.HasOne("Register.Domain.Entities.Person", "Person")
@@ -371,9 +510,7 @@ namespace Register.Infra.Data.Repository.Migrations
                 {
                     b.HasOne("Register.Domain.Entities.Condition", "Condition")
                         .WithMany("PatientList")
-                        .HasForeignKey("ConditionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ConditionId");
 
                     b.HasOne("Register.Domain.Entities.Person", "Person")
                         .WithMany()
