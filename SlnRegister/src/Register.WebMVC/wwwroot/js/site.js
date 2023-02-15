@@ -4,6 +4,7 @@ $(document).ready(() => {
     getDataTable('#table-person');
     getDataTable('#table-patient');
     getDataTable('#table-user');
+    getDataTable('#table-doctor');
 });
 
 liveToastMessage = (message, origin) => {
