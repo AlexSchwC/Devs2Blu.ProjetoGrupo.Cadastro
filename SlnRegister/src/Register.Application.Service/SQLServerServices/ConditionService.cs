@@ -34,7 +34,7 @@ namespace Register.Application.Service.SQLServerServices
             }).ToList();
         }
 
-        public async Task<ConditionDTO> GetById(int id)
+        public async Task<ConditionDTO> GetById(int? id)
         {
             var cond = new ConditionDTO();
             return cond.maptoDTO(await _repository.GetById(id));

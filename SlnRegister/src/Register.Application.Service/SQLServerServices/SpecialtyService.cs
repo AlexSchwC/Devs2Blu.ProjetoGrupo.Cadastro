@@ -32,7 +32,7 @@ namespace Register.Application.Service.SQLServerServices
             }).ToList();
         }
 
-        public async Task<SpecialtyDTO> GetById(int id)
+        public async Task<SpecialtyDTO> GetById(int? id)
         {
             var spe = new SpecialtyDTO();
             return spe.maptoDTO(await _repository.GetById(id));

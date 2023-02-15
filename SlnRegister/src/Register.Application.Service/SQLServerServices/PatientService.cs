@@ -46,7 +46,7 @@ namespace Register.Application.Service.SQLServerServices
             return listaDTO;
         }
 
-        public async Task<PatientDTO> GetById(int id)
+        public async Task<PatientDTO> GetById(int? id)
         {
             var patient = new PatientDTO();
             return patient.mapToDTO(await _repository.GetById(id));
