@@ -65,6 +65,19 @@ namespace Register.Infra.Data.Repository.Context
                 new { Id = 3, PersonId = 6, SpecialtyId = 2, CNPJ = "89.466.123/0001-26", CRM = "CRM/RS 123147" }
                 );
 
+            modelBuilder.Entity<Address>()
+                .HasData(
+                new {Id = 1, PersonId = 1, City = "Blumenau", PostalCode = "89012-412", District = "SC", Street = "Rua Curitiba", Number = "123" },
+                new { Id = 2, PersonId = 2, City = "Blumenau", PostalCode = "89051-260", District = "SC", Street = "Rua Pedro Francisco Cordeiro", Number = "453" },
+                new { Id = 3, PersonId = 3, City = "Blumenau", PostalCode = "89051-170", District = "SC", Street = "Rua Caiena", Number = "1963" },
+                new { Id = 4, PersonId = 4, City = "Blumenau", PostalCode = "89046-636", District = "SC", Street = "Rua Áustria", Number = "2587" },
+                new { Id = 5, PersonId = 5, City = "Blumenau", PostalCode = "89027-351", District = "SC", Street = "Rua Bruno Hort", Number = "8746" },
+                new { Id = 6, PersonId = 6, City = "Blumenau", PostalCode = "89022-275", District = "SC", Street = "Rua Turvo", Number = "7895" },
+                new { Id = 7, PersonId = 7, City = "Blumenau", PostalCode = "89095-510", District = "SC", Street = "Rua Otto Manzke", Number = "753" },
+                new { Id = 8, PersonId = 8, City = "Blumenau", PostalCode = "89057-496", District = "SC", Street = "Rua Augusto Setter", Number = "951" },
+                new { Id = 9, PersonId = 9, City = "Blumenau", PostalCode = "89095-525", District = "SC", Street = "Rua Três Primos", Number = "852" }
+                );
+
             /*modelBuilder.Entity<User>()
                 .HasData(
                 new {Id = 1, PersonId = 1, Username = "maria clara", Password = "123", Email = "maria@gmail.com", PersonType = PersonTypeEnum.Patient},
