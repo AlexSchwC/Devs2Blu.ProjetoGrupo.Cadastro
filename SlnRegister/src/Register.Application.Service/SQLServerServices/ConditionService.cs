@@ -44,11 +44,11 @@ namespace Register.Application.Service.SQLServerServices
         {
             if(entity.id > 0)
             {
-                return await _repository.Save(entity.mapToEntity());
+                return await _repository.Update(entity.mapToEntity());
             }
             else
             {
-                return await _repository.Update(entity.mapToEntity());
+                return await _repository.Save(entity.mapToEntity());
             }
             
         }

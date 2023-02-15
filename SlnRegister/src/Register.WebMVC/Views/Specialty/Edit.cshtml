@@ -1,0 +1,21 @@
+﻿@using Register.Domain.DTO
+@model SpecialtyDTO
+
+<form asp-controller="Specialty" asp-action="Edit" method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="name" for="name">Especialidade</label>
+                    <input asp-for="name" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Informe a especialidade">
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
+                <div class="buttons-edit-create form-group mt-3">
+                    <input type="submit" class="btn btn-warning w-100 btn-block" value="Editar">
+                    <a class="btn btn-dark btn-block w-100 mt-3" asp-action="Index">Back to List</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
