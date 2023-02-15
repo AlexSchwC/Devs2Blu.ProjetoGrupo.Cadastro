@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+SlnRegister/src/Register.Infra.Data.Repository/Migrations/20230215002659_inicalTable.cs
+
+SlnRegister/src/Register.Infra.Data.Repository/Migrations/20230215002659_inicalTable.Designer.cs
+
+SlnRegister/src/Register.WebMVC/appsettings.json
