@@ -38,7 +38,8 @@ namespace Register.WebMVC.Controllers
                     return RedirectToAction(nameof(Index));
             }
 
-            return View(specialty);
+            //return View(specialty);
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -63,7 +64,8 @@ namespace Register.WebMVC.Controllers
                 if (await _service.Save(specialty) > 0)
                     return RedirectToAction(nameof(Index));
             }
-            return View(specialty);
+            //return View(specialty);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

@@ -32,8 +32,8 @@ namespace Register.WebMVC.Controllers
             ViewData["specialtyId"] = new SelectList(await _specialtyService.GetAll(), "id", "name", "Select...");
             return View();
         }
-        [HttpPost]
 
+        [HttpPost]
         public async Task<IActionResult> Create([Bind("id, specialtyId, cnpj, crm, personId")] DoctorDTO doctor)
         {
             if (ModelState.IsValid)
@@ -42,8 +42,10 @@ namespace Register.WebMVC.Controllers
                     return RedirectToAction(nameof(Index));
             }
             ViewData["specialtyId"] = new SelectList(await _specialtyService.GetAll(), "id", "name", doctor.specialtyId);
-            return View(doctor);
+            //return View(doctor);
+            return RedirectToAction("Index");
         }
+
         public async Task<IActionResult> Edit(int id)
         {
             if (id == null)
@@ -68,7 +70,8 @@ namespace Register.WebMVC.Controllers
                     return RedirectToAction(nameof(Index));
             }
             ViewData["specialtyId"] = new SelectList(await _specialtyService.GetAll(), "id", "name", doctor.specialtyId);
-            return View(doctor);
+            //return View(doctor);
+            return RedirectToAction("Index");
         }
 
 
